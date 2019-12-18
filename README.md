@@ -21,7 +21,19 @@ const App () => (
       pageSize={30}
       // custom render item, data is used to render item.
       itemRender={(data, index) => <Item {...data} key={index} />}
+      // container dom style
+      style
+      // container dom class
+      className
     />
   </Provider>
 )
 ```
+
+## Provider
+
+record list states, record loaded item data, scroll position
+
+## Scroller
+
+main of react-roll

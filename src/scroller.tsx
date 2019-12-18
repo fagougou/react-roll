@@ -3,9 +3,9 @@ import ScrollerProps from './types/scrollerProps';
 import ScrollContext from './context';
 
 export const Scroller = ({
-  length = 20,
-  topCount = 6,
   averageHeight = 350,
+  focusLength = 20,
+  anchorIndex = 4,
   fetch,
   pageSize = 30,
   renderItem,
@@ -29,8 +29,8 @@ export const Scroller = ({
   } = useContext(ScrollContext);
 
   const activeItems = useMemo(
-      () => items.slice(index, index + length),
-      [items, index, length],
+      () => items.slice(index, index + focusLength),
+      [items, index, focusLength],
   );
 
   const upperHolderHeight = useMemo(() => averageHeight * index, [
@@ -39,9 +39,9 @@ export const Scroller = ({
   ]);
 
   const underHolderHight = useMemo(() => {
-    const v = averageHeight * (items.length - index - length);
+    const v = averageHeight * (items.length - index - focusLength);
     return v >= 0 ? v : 0;
-  }, [items.length, index, averageHeight, length]);
+  }, [items.length, index, averageHeight, focusLength]);
 
   // restore scroll position
   useEffect(() => {
@@ -87,7 +87,7 @@ export const Scroller = ({
       }
 
       const startIndex = Math.floor(
-          (cd.scrollTop - topCount * averageHeight) / averageHeight,
+          (cd.scrollTop - anchorIndex * averageHeight) / averageHeight,
       );
       setIndex(startIndex >= 0 ? startIndex : 0);
 
@@ -98,7 +98,7 @@ export const Scroller = ({
     cd.addEventListener('scroll', onScroll);
 
     return () => cd.removeEventListener('scroll', onScroll);
-  }, [averageHeight, loading, topCount, setIndex, setScrollTop]);
+  }, [averageHeight, loading, anchorIndex, setIndex, setScrollTop]);
 
   return (
     <div
