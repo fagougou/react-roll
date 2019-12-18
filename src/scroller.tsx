@@ -10,7 +10,7 @@ export const Scroller = ({
   pageSize = 30,
   renderItem,
   className = '',
-  style = {height: 500, overflow: 'auto'},
+  style = {},
 }: ScrollerProps) => {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -104,7 +104,7 @@ export const Scroller = ({
     <div
       className={className}
       ref={(n) => contanierRef.current = n}
-      style={style}>
+      style={{minHeight: 300, overflow: 'auto', ...style}}>
       <div style={{height: upperHolderHeight}} />
       {activeItems.map((item) => renderItem(item.data, item.index))}
       <div
