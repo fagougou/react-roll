@@ -43,7 +43,7 @@ export const Scroller = ({
   const underHolderHight = useMemo(() => {
     const v = averageHeight * (items.length - index - length);
     return v >= 0 ? v : 0;
-  }, [items.length, index, averageHeight, length]);
+  }, [averageHeight, items.length, index, length]);
 
   // restore scroll position
   useEffect(() => {
