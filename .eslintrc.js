@@ -21,6 +21,7 @@ module.exports = {
   },
   'plugins': [
     'react',
+    'react-hooks',
     '@typescript-eslint',
   ],
   'overrides': [
@@ -30,5 +31,9 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': [2, { args: 'none' }]
       }
     }
-  ]
+  ],
+  'rules': {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
 };

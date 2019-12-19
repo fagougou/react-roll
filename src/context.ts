@@ -10,6 +10,9 @@ const ScrollContext = createContext<ContextProps>({
   setScrollTop() {},
   page: 1,
   setPage() {},
+  isControl: false,
+  isComplete: false,
+  setIsComplete() {},
 });
 
 export default ScrollContext;

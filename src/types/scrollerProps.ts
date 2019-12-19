@@ -1,12 +1,9 @@
 interface ScrollerProps {
-  length: number
-  topCount: number
   averageHeight: number
-  fetch(data: any): Promise<any[]>
-  pageSize: number
-  renderItem(data: any, index: number): React.ReactElement
+  element: React.ReactType
   className?: string
   style?: React.CSSProperties
+  onLoad(event?: {page?: number, push(data: []): void}): void
 }
 
 export default ScrollerProps;

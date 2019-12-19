@@ -9,6 +9,9 @@ interface ContextProps {
   setScrollTop(v: number): void
   page: number
   setPage(v: number | ((s: number) => number)): void
+  isControl: boolean
+  isComplete: boolean
+  setIsComplete(v: boolean): void
 }
 
 export default ContextProps;

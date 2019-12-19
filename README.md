@@ -6,21 +6,18 @@
 ``` javascript
 import {Provider, Scroller} from 'react-roll'
 
+const Item = <div>{data}</div>
+
+const handleLoad = (page, push) => {
+  fetch(page)
+  .then(list => push(list))
+}
+
 const App () => (
-  <Provider>
+  <Provider source={[]}>
     <Scroller
-      // render item's average height
-      averageHeight={350}
-      // index of anchor that trigger update render items
-      anchorIndex={6}
-      // fetch is to get list data, need return array data
-      fetch={fetch}
-      // render item length
-      focusLength={20}
-      // length of each fetch data, if less than focusLength that cover by focusLength
-      pageSize={30}
-      // custom render item, data is used to render item.
-      itemRender={(data, index) => <Item {...data} key={index} />}
+      element={Item}
+      onLoad={handleLoad}
     />
   </Provider>
 )

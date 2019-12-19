@@ -1,20 +1,19 @@
 import React, {useState, useEffect, useRef, useContext, useMemo} from 'react';
 import ScrollerProps from './types/scrollerProps';
 import ScrollContext from './context';
+import packItems from './utils/packItems';
 
 export const Scroller = ({
-  length = 20,
-  topCount = 6,
   averageHeight = 350,
-  fetch,
-  pageSize = 30,
-  renderItem,
+  element: Element,
   className = '',
   style = {},
+  onLoad,
 }: ScrollerProps) => {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const compeltedRef = useRef(false);
+  const [length, setLength] = useState(0);
+  const [topCount, setTopCount] = useState(0);
   const lastScrollTop = useRef(0);
   const contanierRef = useRef<HTMLDivElement | null>();
   const {
@@ -26,6 +25,9 @@ export const Scroller = ({
     setScrollTop,
     page,
     setPage,
+    isControl,
+    isComplete,
+    setIsComplete,
   } = useContext(ScrollContext);
 
   const activeItems = useMemo(
@@ -52,24 +54,29 @@ export const Scroller = ({
     setMounted(true);
   }, [scrollTop, mounted]);
 
+  // guess item count, visible count eg.
+  useEffect(() => {
+    if (page === 1 && items.length) {
+      const len = Math.floor(items.length * 0.7);
+      setLength(len);
+      setTopCount(Math.floor(len * 0.2));
+    }
+  }, [items.length, page]);
 
   useEffect(() => {
     setLoading(true);
-    fetch(pageSize).then((data) => {
+    const push = (data: []) => {
+      setItems((state) => {
+        const list = packItems(data, state.length);
+        return page === 1 ? list : [...state, ...list];
+      });
+      if (!data.length) {
+        setIsComplete(true);
+      }
       setLoading(false);
-      if (data.length === 0) {
-        compeltedRef.current = true;
-      }
-      const list = data.map(
-          (item, i) =>
-            ({index: (page - 1) * pageSize + i, data: item}));
-      if (page === 1) {
-        setItems(list);
-      } else {
-        setItems((state) => [...state, ...list]);
-      }
-    });
-  }, [fetch, setItems, page, pageSize]);
+    };
+    isControl ? onLoad() : onLoad({page, push});
+  }, [isControl, onLoad, page, setIsComplete, setItems]);
 
   useEffect(() => {
     if (!contanierRef.current) return;
@@ -80,7 +87,7 @@ export const Scroller = ({
       if (
         direction &&
         !loading &&
-        !compeltedRef.current &&
+        !isComplete &&
         cd.scrollTop + 3000 > cd.scrollHeight - cd.clientHeight
       ) {
         setPage((state) => state + 1);
@@ -98,15 +105,16 @@ export const Scroller = ({
     cd.addEventListener('scroll', onScroll);
 
     return () => cd.removeEventListener('scroll', onScroll);
-  }, [averageHeight, loading, topCount, setIndex, setScrollTop]);
+  }, [averageHeight, loading,
+    topCount, setIndex, setScrollTop, setPage, isComplete]);
 
   return (
     <div
       className={className}
       ref={(n) => contanierRef.current = n}
-      style={{minHeight: 300, overflow: 'auto', ...style}}>
+      style={{height: '100vh', overflow: 'auto', ...style}}>
       <div style={{height: upperHolderHeight}} />
-      {activeItems.map((item) => renderItem(item.data, item.index))}
+      {activeItems.map((item) => <Element key={item.index} {...item.data} />)}
       <div
         style={{
           height: underHolderHight,
