@@ -11,16 +11,19 @@ export const Provider = ({children, source}: ProviderProps) => {
   const [scrollTop, setScrollTop] = useState(0);
   const [isControl, setIsControl] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [loading, setLoading] = useState(false);
   const lastItemsLength = useRef(0);
 
   useEffect(() => {
     if (!source) return;
     setItems(packItems(source));
+    setLoading(false);
     setIsControl(true);
     if (lastItemsLength.current === source.length) {
       setIsComplete(true);
     } else {
       lastItemsLength.current = source.length;
+      setIsComplete(false);
     }
   }, [source]);
 
@@ -37,6 +40,8 @@ export const Provider = ({children, source}: ProviderProps) => {
       isControl,
       isComplete,
       setIsComplete,
+      loading,
+      setLoading,
     }}
     >
       {React.Children.only(children)}

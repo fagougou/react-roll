@@ -13,6 +13,8 @@ const ScrollContext = createContext<ContextProps>({
   isControl: false,
   isComplete: false,
   setIsComplete() {},
+  loading: false,
+  setLoading() {},
 });
 
 export default ScrollContext;

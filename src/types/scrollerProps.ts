@@ -1,9 +1,9 @@
-interface ScrollerProps {
+interface ScrollerProps extends React.HTMLAttributes<HTMLDivElement> {
   averageHeight: number
   element: React.ReactType
-  className?: string
-  style?: React.CSSProperties
-  onLoad(event?: {page?: number, push(data: []): void}): void
+  length?: number
+  onFetch?(event?: {page?: number, push(data: []): void}): void
+  upperRender?(): JSX.Element
 }
 
 export default ScrollerProps;

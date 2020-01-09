@@ -12,6 +12,8 @@ interface ContextProps {
   isControl: boolean
   isComplete: boolean
   setIsComplete(v: boolean): void
+  loading: boolean
+  setLoading(v: boolean): void,
 }
 
 export default ContextProps;

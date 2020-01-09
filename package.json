@@ -1,18 +1,20 @@
 {
   "name": "react-roll",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "infinite scroller, record scroll position, like twitter's timeline",
   "main": "dist/react-roll.js",
   "module": "dist/react-roll.es.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/randomol/react-roll.git"
+    "url": "git+https://github.com/fagougou/react-roll.git"
   },
   "keywords": [
     "react",
@@ -20,14 +22,13 @@
     "scroll",
     "infinite"
   ],
-  "author": "randomol",
+  "author": "boomyao",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/randomol/react-roll/issues"
+    "url": "https://github.com/fagougou/react-roll/issues"
   },
-  "homepage": "https://github.com/randomol/react-roll#readme",
+  "homepage": "https://github.com/fagougou/react-roll#readme",
   "dependencies": {
-    "react": "^16.12.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.16",
@@ -39,6 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "react": "^16.12.0",
     "rollup": "^1.27.13",
     "rollup-plugin-typescript2": "^0.25.3",
     "typescript": "^3.7.3"
