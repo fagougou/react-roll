@@ -28,8 +28,7 @@
     "url": "https://github.com/fagougou/react-roll/issues"
   },
   "homepage": "https://github.com/fagougou/react-roll#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.9.16",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
