@@ -36,7 +36,7 @@ npm install react-roll
 ### * Quick use!
 
 ``` javascript
-import {Provider, Scroller} from 'react-roll'
+import {Provider, Scroller} from 'react-scoll'
 
 const App () => (
   <Provider>

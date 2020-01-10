@@ -1,5 +1,5 @@
 {
-  "name": "react-roll",
+  "name": "react-scoll",
   "version": "1.1.0",
   "description": "infinite scroller, record scroll position, like twitter's timeline",
   "main": "dist/react-roll.js",

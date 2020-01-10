@@ -29,7 +29,7 @@
 ## 安装
 
 ```
-npm install react-roll
+npm install react-scoll
 ```
 
 ## 使用
@@ -37,7 +37,7 @@ npm install react-roll
 ### * 快速使用！
 
 ``` javascript
-import {Provider, Scroller} from 'react-roll'
+import {Provider, Scroller} from 'react-scoll'
 
 const App () => (
   <Provider>
