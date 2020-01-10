@@ -1,19 +1,35 @@
 ## React-Roll
 #### infinite scroller, record scroll position, like twitter's timeline
 
+🇦🇺English
+|<a href="https://github.com/fagougou/react-roll/docs/README.zh-CN.md">🇨🇳 简体中文</a>
+
+## Features
+
+- Optimization big list
+- infinite scroll loading
+- Record list scroll state
+- Support different height list items
+
 ## DEMO
 
 ### different height items
-![simple-demo](./simple-demo.gif)
+![simple-demo](./pictures/simple-demo.gif)
 
 ### select city of china
-![city-select-demo](./city-select-demo.gif)
+![city-select-demo](./pictures/city-select-demo.gif)
 
 ### infinite scroll to load data
-![infinite-load-demo](./infinite-load-demo.gif)
+![infinite-load-demo](./pictures/infinite-load-demo.gif)
 
 ### record scroll status
-![record-demo](./record-demo.gif)
+![record-demo](./pictures/record-demo.gif)
+
+## Install
+
+```
+npm install react-roll
+```
 
 ## Usage
 
@@ -29,7 +45,7 @@ const App () => (
 )
 ```
 
-### * How list items get data？
+### * How to pass data to each list item?
 
 ``` javascript
 async function fetch(page, push) {
@@ -45,7 +61,7 @@ const ListItem = ({title}) => <div>{title}</div>
 </Provider>
 ```
 
-### * Make scrolling more perfect
+### * Make scrolling more precise
 
 ``` javascript
 
@@ -97,4 +113,4 @@ const ListItem = ({title}) => <div>{title}</div>
 
 | prop   | description                                     | type  | default |
 | :----- | ----------------------------------------------- | ----- | ------: |
-| source | List data, make scrolling components controlled | Array |
+| source | data of list, make scrolling components controlled | Array |
