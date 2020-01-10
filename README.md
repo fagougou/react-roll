@@ -2,7 +2,7 @@
 #### infinite scroller, record scroll position, like twitter's timeline
 
 🇦🇺English
-|<a href="https://github.com/fagougou/react-roll/docs/README.zh-CN.md">🇨🇳 简体中文</a>
+|<a href="./docs/README.zh-CN.md">🇨🇳 简体中文</a>
 
 ## Features
 
